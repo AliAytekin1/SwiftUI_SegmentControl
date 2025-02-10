@@ -12,11 +12,20 @@ struct SegmentControl_SwiftUI: View {
     @State private var secim = -1
     var body: some View {
         VStack(spacing : 20){
-            Image("kiz_kulesi").resizable()
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.2,alignment: .center)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.yellow, lineWidth: 4))
-                .shadow(radius: 10)
+            ZStack{
+                Rectangle().foregroundColor(.yellow)
+                .frame(width: 350,height: 175).offset(x:0,y: -100).padding()
+                Rectangle().stroke(Color.yellow, lineWidth: 1)
+                .frame(width: 350,height: 175)
+                .offset(x:0, y: 70).padding()
+                Image("kiz_kulesi").resizable()
+                .frame(width: UIScreen.main.bounds.width * 0.9, height:UIScreen.main.bounds.height * 0.2,alignment:.center)
+                    .clipShape(Circle())
+                    .overlay(Circle()
+                    .stroke(Color.yellow, lineWidth: 4))
+                    .shadow(radius: 10).padding()
+                    
+                }.padding(50)
             Picker("",selection: $secim){
                 Text("Bir").tag(1)
                 Text("İki").tag(2)
